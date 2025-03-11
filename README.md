@@ -9,6 +9,14 @@ A .NET 9.0 Web API project that showcases fundamental concepts of building RESTf
 - Simple data validation
 - Database seeding
 
+## API Documentation Interface
+
+After running the project, you can access the interactive API documentation through Scalar UI:
+
+![Scalar UI Interface](images/scalar-ui-screenshot.png)
+
+*Screenshot: Scalar UI showing the Student API endpoints and documentation*
+
 ## Educational Purpose
 
 This project serves as a learning resource for:

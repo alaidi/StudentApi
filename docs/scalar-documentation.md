@@ -2,7 +2,7 @@
 
 ## Overview
 This project uses Scalar (formerly Swagger UI) for API documentation. Scalar provides an interactive interface for exploring and testing the API endpoints.
-
+![Scalar UI Interface](images/scalar-ui-screenshot.png)
 ## Setup
 
 1. **NuGet Package Installation**
