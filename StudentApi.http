@@ -1,0 +1,108 @@
+@StudentApi_HostAddress = http://localhost:5014
+@ContentType = application/json
+
+### Get all students
+GET {{StudentApi_HostAddress}}/api/students
+Accept: {{ContentType}}
+
+### Get students with pagination (default page 1, pageSize 10)
+GET {{StudentApi_HostAddress}}/api/students
+Accept: {{ContentType}}
+
+### Get students page 2 with 5 items per page
+GET {{StudentApi_HostAddress}}/api/students?page=2&pageSize=5
+Accept: {{ContentType}}
+
+### Get students last page
+GET {{StudentApi_HostAddress}}/api/students?page=20&pageSize=5
+Accept: {{ContentType}}
+
+### Get student by ID
+GET {{StudentApi_HostAddress}}/api/students/1
+Accept: {{ContentType}}
+
+### Create new student
+POST {{StudentApi_HostAddress}}/api/students
+Content-Type: {{ContentType}}
+
+{
+    "name": "أحمد الهاشمي",
+    "birthDate": "2000-01-01T00:00:00",
+    "phone": "+966500123456",
+    "gender": "Male"
+}
+
+### Update existing student
+PUT {{StudentApi_HostAddress}}/api/students/1
+Content-Type: {{ContentType}}
+
+{
+    "name": "أحمد العمري",
+    "birthDate": "2000-01-01T00:00:00",
+    "phone": "+966500123457",
+    "gender": "Male"
+}
+
+### Delete student
+DELETE {{StudentApi_HostAddress}}/api/students/1
+
+### Test invalid student ID
+GET {{StudentApi_HostAddress}}/api/students/999
+Accept: {{ContentType}}
+
+### Test invalid create request
+POST {{StudentApi_HostAddress}}/api/students
+Content-Type: {{ContentType}}
+
+{
+    "name": "",
+    "birthDate": "invalid-date",
+    "phone": "invalid-phone",
+    "gender": "Invalid"
+}
+
+### Test sequence: Create, Get, Update, Delete
+# 1. Create new student
+POST {{StudentApi_HostAddress}}/api/students
+Content-Type: {{ContentType}}
+
+{
+    "name": "سارة الخالدي",
+    "birthDate": "2001-06-15T00:00:00",
+    "phone": "+966512345678",
+    "gender": "Female"
+}
+
+### 2. Get created student (replace {id} with the ID from previous response)
+GET {{StudentApi_HostAddress}}/api/students/{{id}}
+Accept: {{ContentType}}
+
+### 3. Update student
+PUT {{StudentApi_HostAddress}}/api/students/{{id}}
+Content-Type: {{ContentType}}
+
+{
+    "name": "سارة السعيد",
+    "birthDate": "2001-06-15T00:00:00",
+    "phone": "+966512345679",
+    "gender": "Female"
+}
+
+### 4. Delete student
+DELETE {{StudentApi_HostAddress}}/api/students/{{id}}
+
+### 5. Verify deletion
+GET {{StudentApi_HostAddress}}/api/students/{{id}}
+Accept: {{ContentType}}
+
+### Performance test: Get all students multiple times
+GET {{StudentApi_HostAddress}}/api/students
+Accept: {{ContentType}}
+
+###
+GET {{StudentApi_HostAddress}}/api/students
+Accept: {{ContentType}}
+
+###
+GET {{StudentApi_HostAddress}}/api/students
+###
